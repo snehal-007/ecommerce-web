@@ -1,0 +1,48 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} Contact us {% endblock %}
+
+{% block Contactactive %} active {% endblock Contactactive %}
+
+{% block body %}
+<div class="container my-3">
+  <h2>Contact me!</h2>
+  <form action="/shop/contact/" method="post">{% csrf_token %}
+    <div class="form-group my-3">
+      <label for="uname">Username</label>
+      <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter your username">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Enter your name">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Phone</label>
+      <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your Phone name">
+    </div>
+
+    <div class="form-group">
+      <label for="desc">How may We Help you</label>
+      <textarea class="form-control" id="desc" name="desc" rows="3" placeholder="How may We Help you" ></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+{% endblock %}
+
+
+{% block js %}
+
+<script>
+
+    {% if thank %}
+    alert('Thanks for Ordering with us.Your order is id {{id}}.Use to track your order using Order Tracker')
+    localStorage.clear();
+    document.location = "/shop";
+    {% endif %}
+</script>
+
+{% endblock %}
